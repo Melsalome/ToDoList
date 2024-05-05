@@ -2,14 +2,32 @@ import React from 'react'
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 
-const CompletedTodoList = ({ isCompleteScreen, todoListCompleted, completedTodoFn}) => {
+const CompletedTodoList = ({ isCompleteScreen, todoListCompleted, renderTodoSet}) => {
     
-      const handleDeleteCompleteTodoList = (index) => {
-        const reduceComplete = [...todoListCompleted];
-        reduceComplete.splice(index,1);
-        completedTodoFn(reduceComplete);
-      }
 
+  const deleteTodo = (idTodo, user = 'GrupoAJRM') => {
+    fetch(`https://playground.4geeks.com/todo/todos/${idTodo}`, 
+      {
+        method: 'DELETE',
+        headers: {
+          "content-type": "application/json",
+            CORS: "Access-Control-Allow-Origin",
+        },
+      }
+    ).then((response) => {
+      // console.log(response)
+      return response;
+    }).then ((data) => {
+      renderTodoSet(data);
+    })
+  }
+
+  
+
+      const handleDeleteCompleteTodoList = (id) => {
+        deleteTodo(id)
+      }
+// console.log(todoListCompleted);
   return (
     <>
     <div>
@@ -17,12 +35,10 @@ const CompletedTodoList = ({ isCompleteScreen, todoListCompleted, completedTodoF
         return(
           <>
         <div className='todo-list-item' key={index}>
-        <h3>{item.title}</h3>
-        <p>{item.description}</p>
-        <p><small>Completed on: {item.completedOn}</small></p>
+        <h3>{item.label}</h3>
       </div> 
        <div>
-          <RiDeleteBin5Line className='icon' onClick={() => handleDeleteCompleteTodoList(index)} title='deleted'/>
+          <RiDeleteBin5Line className='icon' onClick={() => handleDeleteCompleteTodoList(item.id)} title='deleted'/>
       </div>
       </>
         )

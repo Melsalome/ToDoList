@@ -7,8 +7,9 @@
 
 body{
   background-color: #875d79;
-  background-image: url(https://i.pinimg.com/originals/0e/38/aa/0e38aa0fcb866eb6898e5a4360a18eb5.gif);
-  background-repeat: repeat-y;
+  background-image: url(https://cdn.shopify.com/s/files/1/0303/0017/6443/products/SCHOOLROOM_BLUE_1931x1080.jpg?v=1599082077);
+  background-size: cover;
+  background-blend-mode: color-burn;
   color: white;
   overflow: hidden;
   margin: 0;
@@ -21,16 +22,17 @@ body{
 
 h1{
   text-align: center;
-
+  margin-top: 2em;
   
 }
 .todo-wrapper{
-  background-color: #5b144d;
+
+  background-color: #771C02;
   padding: 2%;
-  width: 50vw;
+  width: 20vw;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 3%;
+  margin-top: 2rem;
   max-height: 80vh;
   overflow-y: auto;
   box-shadow: 0px 5px 7px rgb(27,27,27);
@@ -164,4 +166,17 @@ margin-right: 25px;
 .check-icon:hover{
   color: rgb(4,196,106);
 }
+
+.search{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.search label{
+  font-size: 20px;
+}
+ .search input{
+  height: 2em;
+} 
 
